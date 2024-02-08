@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, 'README.md'), encoding='utf-8') as fh:
     readme = '\n' + fh.read()
  
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 DESCRIPTION = 'Projeto final da disciplina de Programação Orientada a Objetos II'
 
 setup(
