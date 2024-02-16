@@ -1,72 +1,42 @@
 from googlesearch import search
 import webbrowser
 
-class Searchft:
+class Searchft2:
     '''
-    Classe onde ficam os métodos da biblioteca
-
-    Methods
-    -------
-        buscar(pesquisar, size):
-            efetua pelo item.
-        visitarLink(link):
-            abre o link no navegador da máquina.
-        
+    Classe onde estão contido os metodos dessa biblioteca
     '''
-    def buscar(pesquisar: str, size = 10):
+    def pesquisar(pesquisar: str, size = 10):
         '''
-        Recebe o conteúdo da pesquisa e a quantidade de links que devem ser retornados.
-
-        Parameters
-        ----------
-            pesquisar: str
-                conteúdo da pesquisa.
-            size: int
-                quantidade de links a serem retornados.
-        
-        Returns
-        -------
-            resultado: list
-                retorna uma lista com os links encontrados, caso a quantidade de links enontrados seja menor que informada pelo usuário, retorna somente a quantidade encontrada. 
+        Metodo de pesquisa onde tem como entrada
+        uma string de pesquisa e opcionalmente a quantidade
+        de links para ser retornada
+        retorna os links mais relevantes do item pesquisado 
+        direto pelo terminal.
         '''
         resultado = []
-        for url in search(pesquisar, size):
-            resultado.append(url)
         
+        for url in search(pesquisar, stop=size, lang="pt"):
+            resultado.append(url)
+       
         return resultado
-    
+
     def visitarLink(link: str):
         '''
-        Abre o link recebido, no navegador.
-
-        Parameters
-        ----------
-            link: str
-                link que o usuário deseja abrir.
-
-        Returns
-        -------
-            None 
+        Metodo para acessar um link de forma direta.
+        Ao inserir um link ira abrir uma janela no seu navegador
+        com o link que foi insedo.
         '''
         webbrowser.open(link)
     
-    def pesquisarProduto(produto: str):
+    def pesquisarProduto(produto: str, site = "mercadolivre"):
         '''
-        Realiza pesquisas por links onde o produto esteja relacionado.
-
-        Parameters
-        ----------
-            produto: str
-                nome do produto desejado
-        
-        Returns
-        -------
-            resultado: list
-                links encontrados relacionados ao produto.
+        Metodo que ira pesquisar por um produto 
+        A entrada é uma string que é o produto e a segunda entrada, opcional,
+        é o site onde quer realizar a busca, que por padrão é o mercado livre.
         '''
-        pesquisa = 'mercadolivre/'+produto
+        pesquisa = site+"/" + produto
         resultado = []
-        for url in search(pesquisa, 10):
+        for url in search(pesquisa, stop=10, lang="pt"):
             resultado.append(url)
         
         return resultado
